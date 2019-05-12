@@ -1,8 +1,14 @@
+import 'package:bloc/bloc.dart';
+import 'package:coin_tracker/blocs/SimpleBlocDelegate.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/HomeWidget.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  BlocSupervisor().delegate = SimpleBlocDelegate();
+
+  return runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

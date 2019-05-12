@@ -7,8 +7,7 @@ import 'package:meta/meta.dart';
 class CoinApiClient {
   final http.Client httpClient;
 
-  static const CMC_BASE_URL =
-      "https://pro-api.coinmarketcap.com/v1/cryptocurrency/";
+  static const CMC_BASE_URL = "pro-api.coinmarketcap.com";
   static const API_KEY = "3888227d-f120-430a-8e16-39e6fb841006";
 
   static const COIN_ICON_BASE_URL =
@@ -16,7 +15,7 @@ class CoinApiClient {
 
   CoinApiClient({@required this.httpClient}) : assert(httpClient != null);
 
-  Map<Object, String> _getHeaders() {
+  Map<String, String> _getHeaders() {
     return {
       'Accepts': 'application/json',
       'X-CMC_PRO_API_KEY': API_KEY,
@@ -27,10 +26,11 @@ class CoinApiClient {
     final queryParams = {
       "start": start.toString(),
       "limit": limit.toString(),
-      'convert': 'USD,BTC'
+      "convert": "USD"
     };
 
-    var uri = Uri.http(CMC_BASE_URL, "list/latest", queryParams);
+    var uri = Uri.https(
+        CMC_BASE_URL, "/v1/cryptocurrency/listings/latest", queryParams);
 
     final response = await httpClient.get(uri, headers: _getHeaders());
 
@@ -41,5 +41,4 @@ class CoinApiClient {
     final json = jsonDecode(response.body);
     return CoinListResponse.fromJson(json);
   }
-
 }

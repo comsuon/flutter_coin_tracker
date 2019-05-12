@@ -25,7 +25,7 @@ dependencies:
 
   equatable: ^0.1.0
 
-  flutter_bloc: ^0.5.0
+  flutter_bloc: ^0.8.0
 
 dev_dependencies:
   flutter_test:

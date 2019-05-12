@@ -8,7 +8,7 @@ class CoinListResponse extends Equatable {
   static CoinListResponse fromJson(dynamic json) {
     final data = json['data'] as List;
 
-    var listCoin = [] as List<Coin>;
+    List<Coin> listCoin = [];
 
     //loop over each node in data list
     for (final node in data) {
