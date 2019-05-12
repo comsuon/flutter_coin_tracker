@@ -1,10 +1,11 @@
 import 'package:coin_tracker/blocs/CoinBloc.dart';
 import 'package:coin_tracker/events/CoinEvents.dart';
-import 'package:coin_tracker/models/CoinModel.dart';
 import 'package:coin_tracker/repository/CoinRepository.dart';
 import 'package:coin_tracker/states/CoinState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'CoinItemWidget.dart';
 
 class CoinList extends StatefulWidget {
   final CoinRepository coinRepo;
@@ -48,7 +49,7 @@ class _CoinListState extends State<CoinList> {
               itemCount: coinList.length,
               itemBuilder: (context, position) {
                 final coin = coinList[position];
-                return listItem(coin);
+                return CoinItemWidget(pos: position, coin: coin);
               },
               shrinkWrap: true,
             );
@@ -63,20 +64,4 @@ class _CoinListState extends State<CoinList> {
       ),
     );
   }
-
-  Card listItem(Coin coin) => Card(
-        margin: EdgeInsets.symmetric(vertical: 4),
-        child: InkWell(
-            splashColor: Colors.white12,
-            onTap: () {},
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-              child: Text(
-                "${coin.name}",
-                style: TextStyle(color: Colors.white),
-              ),
-            )),
-        color: Colors.brown,
-        elevation: 4,
-      );
 }

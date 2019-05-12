@@ -23,13 +23,15 @@ class Coin extends Equatable {
   final int id;
   final String name;
   final String symbol;
+  final double price;
 
-  Coin({this.id, this.name, this.symbol}) : super([id]);
+  Coin({this.id, this.name, this.symbol, this.price}) : super([id]);
 
   static Coin fromJson(dynamic json) {
     return Coin(
         id: json['id'] as int,
         name: json['name'] as String,
-        symbol: json['symbol'] as String);
+        symbol: json['symbol'] as String,
+        price: json['quote']['USD']['price'] as double);
   }
 }

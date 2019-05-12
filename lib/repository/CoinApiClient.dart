@@ -10,9 +10,6 @@ class CoinApiClient {
   static const CMC_BASE_URL = "pro-api.coinmarketcap.com";
   static const API_KEY = "3888227d-f120-430a-8e16-39e6fb841006";
 
-  static const COIN_ICON_BASE_URL =
-      "https://s2.coinmarketcap.com/static/img/coins/32x32/";
-
   CoinApiClient({@required this.httpClient}) : assert(httpClient != null);
 
   Map<String, String> _getHeaders() {
